@@ -417,6 +417,15 @@ test('Email with invalid domain', function(){
     equal( testObj.isValid(), false, testObj.error());
     equal( testObj.error(), 'Please enter a proper email address');
 });
+
+test('Email ending with a space should be a valid email', function(){
+    var testObj = ko.observable().extend({ email: true });
+
+    testObj("john@abc.com123 ");
+
+    equal( testObj.isValid(), true);
+});
+
 //#endregion
 
 //#region Date Validation
